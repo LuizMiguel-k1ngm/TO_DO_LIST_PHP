@@ -63,10 +63,10 @@
 <body>
 
 <div container>
+    
+<form action="tarefa/cTarefa.php" method="post">
 
-<form action="index.php">
-
-<input type="text" placeholder="Tarefas:" id="tarefas">
+<input type="text" placeholder="Tarefas:" id="tarefas" name="tarefa">
 <input type="submit" id="submit">
 
 

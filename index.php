@@ -68,28 +68,15 @@
 
     <div container>
 
-        <form action="index.php" method="post">
-            <input type="text" placeholder="Tarefas:" id="tarefas" name="nova_tarefa">
-            <input type="submit" id="submit">
-
-            <br>
-
-            <ul>
-
-                <li>
+    
+                
                     <?php
 
                     include_once "tarefa/tarefa.php";
 
                     ?>
-                </li>
-            </ul>
 
 
-
-
-
-        </form>
     </div>
 
 

@@ -1,18 +1,21 @@
 <?php
+ @session_start();
 
-$tarrefas = $_POST['tarefa'];
+ $tarefa = $_POST['nova_tarefa'];
 
+ if(!empty($tarefa)){
+ echo $tarefa;
 
+ }else{
 
-//adicionar ao final do array
-// $tarrefas[] = $var;
+$var1 = "roxo";
+$a = array('amarelo', 'vermelho', 'azul');
+array_push($a, $var1);
+// print_r($a);
+var_dump($a);
 
-//escluir do array
+}
 
-//  unset($tarrefas[1]);
-
-
-var_dump($tarrefas);
 
 
 

@@ -1,3 +1,7 @@
+<?php
+@session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,69 +16,82 @@
 
 </head>
 <style>
-    body{
+    body {
         height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-image: linear-gradient(45deg, blue, red);
         background-image: url(img/a-minimalist-abstract-digital-background_P-PrtfdSVaugT3n9km7HkQ_NVZm_Md9TIOOEfz6Vt42ow_sd.jpeg);
         background-size: cover;
         background-repeat: no-repeat;
-        font-family: Verdana, Geneva, Tahoma, sans-serif ;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 
     }
 
-    div{
-    width: 350px;
-    height: 350px;
-    background-color: #5dcb63;
-    border-radius: 15px;
-}
-#tarefas{
-    padding: 5px;
-    margin: 5px;
-    margin-top: 10px;
-    margin-left: 10px;
-    border-radius: 10px;
-    
-}
+    div {
+        width: 350px;
+        height: 350px;
+        background: transparent;
+        backdrop-filter: blur(70px);
+        border-radius: 15px;
+    }
 
-#lista{
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   font-weight: bold;
-   margin-top: 10px;
-   margin-left: 10px;
-   color: white;
-   
-}
+    #tarefas {
+        padding: 5px;
+        margin: 5px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border-radius: 10px;
 
-#submit{
-    border-radius: 10px;
-    background-color: white;
-    font-size: 14px;
+    }
 
-}
+    #lista {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-left: 10px;
+        color: white;
 
+    }
 
+    #submit {
+        border-radius: 10px;
+        background-color: white;
+        font-size: 14px;
 
+    }
 </style>
 
 <body>
 
-<div container>
-    
-<form action="tarefa/cTarefa.php" method="post">
+    <div container>
 
-<input type="text" placeholder="Tarefas:" id="tarefas" name="tarefa">
-<input type="submit" id="submit">
+        <form action="index.php" method="post">
+            <input type="text" placeholder="Tarefas:" id="tarefas" name="nova_tarefa">
+            <input type="submit" id="submit">
+
+            <br>
+
+            <ul>
+
+                <li>
+                    <?php
+
+                    include_once "tarefa/tarefa.php";
+
+                    ?>
+                </li>
+            </ul>
 
 
-<?php
-include('include/lista_tarefas.php')
-?>
-</form>
-</div>
+
+
+
+        </form>
+    </div>
+
 
 
 </body>

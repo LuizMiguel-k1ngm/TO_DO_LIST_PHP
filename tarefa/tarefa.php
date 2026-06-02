@@ -39,13 +39,26 @@ if (isset($_POST['remover_id'])) {
 <style>
 #add {
     font-size: 15px;
+    border: 1px;
+    background-color: greenyellow;
+
+}
+
+#digite {
+    border-radius: 5px;
+    border: 1px;
+}
+
+#remove {
+
+    border: 1px solid black;
 
 }
 </style>
 
 
 <form method="POST" class="p-1 m-1 mt-2 ">
-    <input type="text" name="nova_tarefa" placeholder="Digite uma tarefa" required>
+    <input type="text" name="nova_tarefa" placeholder="Digite uma tarefa" id="digite" required>
     <button type="submit" id="add">
 
         <i class="bi bi-check-lg"></i>
@@ -63,7 +76,7 @@ if (isset($_POST['remover_id'])) {
 
         <form method="POST" style="display: inline;">
             <input type="hidden" name="remover_id" value="<?php echo $index; ?>">
-            <button type="submit" style="color: red; margin-left: 10px;">
+            <button type="submit" id="remove" style="color: red; margin-left: 10px;">
                 <i class="bi bi-trash3"></i>
             </button>
         </form>

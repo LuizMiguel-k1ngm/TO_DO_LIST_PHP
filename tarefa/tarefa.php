@@ -5,49 +5,50 @@ if (!isset($_SESSION['lista_tarefas'])) {
     $_SESSION['lista_tarefas'] = array();
 }
 
-// === LÓGICA 1: ADICIONAR TAREFA ===
+
 $tarefa = $_POST['nova_tarefa'] ?? null;
 
 if (!empty($tarefa)) {
     $_SESSION['lista_tarefas'][] = trim($tarefa);
-    echo 'Tarefa adicionada!<br><br>';
+    
 }
 
-// === LÓGICA 2: REMOVER TAREFA ===
-// Verifica se o botão "remover" foi clicado e se enviou o ID (índice) da tarefa
+
 if (isset($_POST['remover_id'])) {
     $id_para_remover = $_POST['remover_id'];
 
-    // Remove o item específico do array usando o ID
+    
     unset($_SESSION['lista_tarefas'][$id_para_remover]);
 
-    // Opcional: Reorganiza os números do array (0, 1, 2...) para não deixar buracos
+    
     $_SESSION['lista_tarefas'] = array_values($_SESSION['lista_tarefas']);
 
-    // Atualiza a página para mostrar a lista já sem o item
+    
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
 ?>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 <style>
-#add{
+#add {
     font-size: 15px;
 
 }
-
 </style>
 
 
-<form method="POST" class="p-1 ">
-    <input  type="text" name="nova_tarefa" placeholder="Digite uma tarefa" required>
+<form method="POST" class="p-1 m-1 mt-2 ">
+    <input type="text" name="nova_tarefa" placeholder="Digite uma tarefa" required>
     <button type="submit" id="add">
 
-    <i class="bi bi-check-lg"></i>
+        <i class="bi bi-check-lg"></i>
     </button>
 </form>
 
@@ -56,19 +57,19 @@ if (isset($_POST['remover_id'])) {
 
 <ul>
     <?php if (!empty($_SESSION['lista_tarefas'])): ?>
-        <?php foreach ($_SESSION['lista_tarefas'] as $index => $item): ?>
-            <li class="p-2">
-                <?php echo $item; ?>
+    <?php foreach ($_SESSION['lista_tarefas'] as $index => $item): ?>
+    <li class="p-2">
+        <?php echo $item; ?>
 
-                <form method="POST" style="display: inline;">
-                    <input type="hidden" name="remover_id" value="<?php echo $index; ?>">
-                    <button type="submit" style="color: red; margin-left: 10px;">
-                        <i class="bi bi-trash3"></i>
-                    </button>
-                </form>
-            </li>
-        <?php endforeach; ?>
+        <form method="POST" style="display: inline;">
+            <input type="hidden" name="remover_id" value="<?php echo $index; ?>">
+            <button type="submit" style="color: red; margin-left: 10px;">
+                <i class="bi bi-trash3"></i>
+            </button>
+        </form>
+    </li>
+    <?php endforeach; ?>
     <?php else: ?>
-        <p>Nenhuma tarefa na lista.</p>
+    <p>Nenhuma tarefa na lista.</p>
     <?php endif; ?>
 </ul>

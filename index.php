@@ -35,7 +35,8 @@ body {
 
 div {
     width: 350px;
-    height: 350px;
+    height: 500px;
+    box-shadow: 0 2px 22px black;
     background: transparent;
     backdrop-filter: blur(70px);
     border-radius: 15px;
